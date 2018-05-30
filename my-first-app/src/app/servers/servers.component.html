@@ -1,0 +1,27 @@
+
+  <input
+  type = "text"
+  class = "form-control"
+  [(ngModel)] = "serverName" >
+
+  <br>
+
+<button 
+    class = "btn btn-primary" 
+    [disabled] = "!allowNewServer"
+    (click) = "onServerClick() " >Add Server</button>
+
+<!-- <input
+  type = "text"
+  class = "form-control"
+  (input) = "onServerEntry($event)" > -->
+
+
+<p *ngIf = "serverCreated"> Server {{ serverName }} is created with instance = {{ count }} </p>
+
+<p [ngStyle] = "{backgroundColor : getColour()}" > Server is {{ getServerStat() }}</p>
+
+<br> <br>
+
+<app-server></app-server>
+

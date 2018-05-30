@@ -1,0 +1,15 @@
+<!-- <p>My Server with id {{ serverId }} is currently {{ serverStatus }}</p>
+<p>Calling the same from a method {{ getServerStatus() }}</p> -->
+
+<button class = "btn btn-primary"
+        (click) = "onButtonClick()">Display Details</button>
+
+<p *ngIf = "isNextValue">Secret Password = "Tuna"</p>
+
+<div *ngFor = "let val of logArray; let i = index"
+    [ngStyle] = "{backgroundColor : val >=5 ? 'green' : 'transparent'}">
+    This is the Click Number {{ val }} at {{ timeValue }} and the index is {{ i }}</div>
+
+
+
+

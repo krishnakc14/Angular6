@@ -1,0 +1,10 @@
+<input type = "text"
+        class = "form-control"
+        [(ngModel)] = "userName">
+
+<p>User Name : {{ userName }}</p>
+
+<button class = "btn tbn-primary"
+        [disabled] = "!istextPresent"
+        (click) = "onButtonClick()">Add Name</button>
+

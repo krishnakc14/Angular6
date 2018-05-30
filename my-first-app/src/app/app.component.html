@@ -1,0 +1,26 @@
+<app-header (featureSelected) = "onFeatureSelected($event)"></app-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-recipes *ngIf = "featureSelected === 'recipe'"></app-recipes>
+            <app-shopping-list *ngIf = "featureSelected != 'recipe'"></app-shopping-list>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row">
+   <div class="col-lg-6 col-lg-offset-2">
+       <app-gamecontrol (intervalFIred) = "onEveryFiring($event)"></app-gamecontrol>
+   </div>
+</div>
+
+<div class="row">
+        <div class="col-lg-6 col-lg-offset-2">
+            <app-even *ngFor = "let value of evenValues"
+                        [myEvenNumber] = "value"></app-even>
+            <app-odd *ngFor="let value of oddValues"
+                     [myOddNumber] = "value"></app-odd>
+        </div>
+     </div> -->
+
