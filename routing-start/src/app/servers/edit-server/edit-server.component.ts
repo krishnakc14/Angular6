@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 import { ServersService } from '../servers.service';
 
@@ -8,9 +8,13 @@ import { ServersService } from '../servers.service';
   styleUrls: ['./edit-server.component.css']
 })
 export class EditServerComponent implements OnInit {
+
+  @Output() emitValue =  new EventEmitter<String>();
   server: {id: number, name: string, status: string};
   serverName = '';
   serverStatus = '';
+  myValue:String = "Hello I am getting emitted!";
+  @ViewChild('name') name:ElementRef;
 
   constructor(private serversService: ServersService) { }
 
@@ -22,6 +26,10 @@ export class EditServerComponent implements OnInit {
 
   onUpdateServer() {
     this.serversService.updateServer(this.server.id, {name: this.serverName, status: this.serverStatus});
+  }
+
+  onClick(){
+    this.emitValue.emit(this.name.nativeElement.value);
   }
 
 }

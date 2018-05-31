@@ -2,6 +2,7 @@
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
       <a
+        [routerLink] = '["/servers", 5, "edit"]'
         href="#"
         class="list-group-item"
         *ngFor="let server of servers">
@@ -10,9 +11,10 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <app-edit-server></app-edit-server>
+    <app-edit-server
+    (emitValue) = "onEmit($event)"></app-edit-server>
     <hr>
-    <app-server></app-server>
+    <app-server  [whatisit]=" 'whatvalue' "></app-server>  
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { ServersService } from '../servers.service';
 
@@ -8,12 +8,19 @@ import { ServersService } from '../servers.service';
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent implements OnInit {
+
   server: {id: number, name: string, status: string};
+  @Input() whatisit;
+
 
   constructor(private serversService: ServersService) { }
 
   ngOnInit() {
     this.server = this.serversService.getServer(1);
+  }
+
+  onClick(){
+
   }
 
 }

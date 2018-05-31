@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { CommonService } from '../shared/app.common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  @Input() value:String;
+
+  constructor(private common:CommonService, private router:Router) { }
 
   ngOnInit() {
+  }
+
+  onClick(name:HTMLInputElement){
+    this.router.navigate(['servers']);
+    this.common.add(name.value, "One");
+    this.common.myEmitter.emit(this.common);
   }
 
 }
