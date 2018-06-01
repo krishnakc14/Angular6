@@ -1,4 +1,5 @@
-<div class="form-group">
+<div>
+  <div class="form-group">
   <label for="name">Server Name</label>
   <input
     type="text"
@@ -18,14 +19,7 @@
 </div>
 <button
   class="btn btn-primary"
-  (click)="onUpdateServer()">Update Server</button>
+  (click)="allowEditing && onUpdateServer()"
+  [ngClass]="{disabled : !allowEditing}">Update Server</button>
 
-  <div class="container">
-      <div class="row">
-    
-        <input type = "text"  #name><br>
-        <button class="btn btn-primary"
-               (click) = "onClick()">My Button</button>
-      </div>
-  </div>
-
+</div>
