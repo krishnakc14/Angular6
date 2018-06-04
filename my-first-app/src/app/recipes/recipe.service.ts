@@ -1,13 +1,10 @@
 import { Recipe } from "./recipe.model";
-import { EventEmitter } from "@angular/core";
 import { Ingredient } from "../shared/ingredient-model";
 
 export class RecipeService{
 
-    selectedRecipe = new EventEmitter<Recipe>();
-
    private recipes:Recipe[] = [
-        new Recipe('Chicken Tandoori', 
+        new Recipe('ChickenTandoori', 
         'Tandoori', 
         'https://upload.wikimedia.org/wikipedia/commons/d/dc/A_piece_of_a_tandoori_chicken.JPG',
         [new Ingredient("Chicken", 2), new Ingredient("Curd", 4) ]),
@@ -22,4 +19,7 @@ export class RecipeService{
           return this.recipes.slice();
       }
 
+      getRecipeById(index:number) {
+        return this.recipes[index];
+      }
 }

@@ -17,6 +17,7 @@ import { AuthGuard } from './auth-gurad.service';
 import { AuthService } from './auth.service';
 import { canDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 import { AppRouting } from './app-routing.module';
+import { UsersService } from './users.service';
 
 
 
@@ -37,7 +38,7 @@ import { AppRouting } from './app-routing.module';
     HttpModule,
     AppRouting
   ],
-  providers: [ServersService, AuthGuard, AuthService, canDeactivateGuard],
+  providers: [ServersService, AuthGuard, AuthService, canDeactivateGuard, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

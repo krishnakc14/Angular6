@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonService } from './shared/app.common.service';
+import { UsersService } from './users.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,9 @@ export class AppComponent {
 
   displayVal:CommonService;
 
-  constructor(private common:CommonService){
+  userActivated = false;
+
+  constructor(private common:CommonService, private usersService:UsersService){
 
   }
 
@@ -29,6 +32,14 @@ export class AppComponent {
          this.isValueSet = true;
        }
      );
+
+     this.usersService.mySubject.subscribe(
+       (id:number) => {
+         if(id === 1){
+           this.userActivated = true;
+         }
+       }
+     )
    
   }
 

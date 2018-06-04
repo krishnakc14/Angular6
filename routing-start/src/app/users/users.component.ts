@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-users',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent {
+
+constructor(private usersService:UsersService){}
+
   users = [
     {
       id: 1,
@@ -20,4 +24,10 @@ export class UsersComponent {
       name: 'Chris'
     }
   ];
+
+  onUserClick(){
+    this.usersService.mySubject.next(1);
+  }
+
+
 }

@@ -1,15 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  ngOnInit(){
+
+    const myObservable = Observable.create(
+      (observer:Observer<string>) => {
+        setTimeout(() => {
+          observer.next('First package');
+        }, 2000);
+        setTimeout(() => {
+          console.log('Second Package!');
+        }, 4000);
+        setTimeout(() => {
+        //  observer.error('Go Home Bud!')
+        observer.complete();
+        }, 5000);
+      }
+    );
+
+    const myANotherObservable = Observable.create(
+      (observer:Observer<string>) => {
+       observer.next('Hurray Baby Hurray!');
+       observer.next('Hurray Baby Hurray dobara!');
+       setTimeout(() => {
+        console.log('Yo yoo Package!');
+      }, 4000);
+       observer.error('Errorrr');
+       observer.complete();
+
+      }
+    );
+
+    myANotherObservable.subscribe(
+      (myStr:string) => {console.log(myStr); },
+      (myErr:string) => {console.log(myErr); },
+      () => {console.log('All is over')}
+    )
+
+
+    myObservable.subscribe(
+      (response:string) => { console.log(response); },
+      (error:string) => { console.log(error); },
+      () => { console.log('Its Over ! '); }
+    )
+
+  }
 
   // oddValues: number[] = [];
   // evenValues: number[] = [];
-  featureSelected:String = 'recipe';
+ 
 
   // onEveryFiring(firedNumber:number){
   //   console.log("Fired Number is"+firedNumber);
@@ -20,6 +66,9 @@ export class AppComponent {
   //   }
   // }
 
+
+  featureSelected:String = 'recipe';
+  
   onFeatureSelected(feature:String){
     this.featureSelected = feature;
   }
