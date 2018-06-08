@@ -1,0 +1,25 @@
+.container {
+  margin-top: 30px;
+  /* background: url(/Farmland_Heading.jpg) no-repeat scroll; */
+}
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+
+
+.intro {
+	display: table;
+	width: 100%;
+	height: auto;
+	padding: 100px 0;
+	text-align: center;
+	color: white;
+	background: url(img/Farmland_Heading.jpg) no-repeat scroll;
+	background-color: black;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+}
+

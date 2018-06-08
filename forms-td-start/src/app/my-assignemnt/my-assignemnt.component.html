@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form (ngSubmit) = "onAssignmentSubmit()" #assignmentForm= "ngForm">
+        <div id="userData">
+
+          <div class="form-group">
+            <label for="emailId">Email</label>
+            <input type="email" id="emailId" class="form-control" ngModel name="emailId" required email
+                    #emailId = "ngModel">
+             <span class="help-block" *ngIf = "emailId.touched && !emailId.valid">Pls Enter a valid Email!</span>
+          </div>
+
+          <div class="form-group">
+              <label for="subscription">Subscription</label>
+              <select  id="subscription" class="form-control" ngModel name="subscription" required
+                      [(ngModel)] = "subscribedTo">
+                <option value="Basic">Basic</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Pro">Pro</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ngModel name="password" required password
+                    #password = "ngModel">
+            <span class="help-block" *ngIf = "password.touched && !password.valid">Invalid Password Entry</span>
+          </div>
+
+          <button class="btn btn-primary" type="submit"
+                  [disabled] = "!assignmentForm.valid">Submit</button>
+
+        </div>
+
+        <div class="row" *ngIf = "formSubmitted">
+          <hr>
+          <div class="form-group">
+            <h3>Your Entries</h3>
+            <p>Email: {{user.email}}</p>
+            <p>Password: {{user.password}}</p>
+            <p>Subscription: {{user.subscription}}</p>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
