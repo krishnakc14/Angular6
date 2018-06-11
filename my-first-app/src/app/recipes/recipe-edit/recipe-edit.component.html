@@ -1,3 +1,109 @@
-<p>
-  recipe-edit works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup] = "myRecipeForm" (ngSubmit) = "onSubmit()">
+      <div >
+          <div class="row">
+              <div class="col-xs-8">
+                 <div class="form-group">
+                    <label for="name">Name</label>
+                   <input type="text" class="form-control" formControlName="name">
+                 </div>
+              </div>  
+            </div> 
+              <div class="row">
+                  <div class="col-xs-8">
+                     <div class="form-group">
+                        <label for="imagePath">Image URL</label>
+                      <input type="text" 
+                            formControlName="imagePath"
+                            class="form-control"
+                            #imagePath>
+                     </div>
+                  </div>    
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                   <div class="form-group">
+                    <img [src]="imagePath.value" class="img-responsive">   
+                   </div>
+                </div>    
+          </div>
+
+            <div class="row">
+                <div class="col-xs-8">
+                   <div class="form-group">
+                      <label for="description">Description</label>
+                    <textarea type="text" class="form-control" rows="5" formControlName="description"></textarea>
+                   </div>
+                </div>  
+             </div> 
+
+       </div>
+       <h4>Ingredients</h4>
+      <div class="row">
+        <div class="col-xs-12">
+          <div formArrayName = "ingredients">
+              <div class="col-xs-6">
+                  <div class="form-group">
+                      <label for="name">Name</label> 
+                  </div>
+                   
+                </div>
+                <div class="col-xs-4">
+                  <div class="form-group">
+                      <label for="amount">Amount</label>     
+                  </div>    
+                </div>
+                <div class="col-xs-2">
+                  <div class="form-group">
+                      <label for="clear">Clear</label>
+                  </div>
+                </div>
+              <div class="row" 
+                    *ngFor="let ingredCtrl of myRecipeForm.get('ingredients').controls; let i=index"
+                    [formGroupName] = "i">
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                        <!-- <label for="name">Name</label> -->
+                        <input type="text" class="form-control" formControlName="name">
+                    </div>
+                     
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="form-group">
+                        <!-- <label for="amount">Amount</label> -->
+                        <input type="number" class="form-control" formControlName = "amount">
+                    </div>    
+                  </div>
+                  <div class="col-xs-2">
+                    <div class="form-group">
+                        <!-- <label for="clear">Clear</label> -->
+                        <button class="btn btn-danger" type="button"  (click)="onClearIngredient(i)">X</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-8 btn-toolbar">
+                        <button class="btn btn-primary"
+                                 type="button"
+                                 (click)="onAddIngredient()">Add Ingredient</button>
+                        
+                    </div>
+                </div>
+          </div>
+         
+        </div>
+      </div>
+      <br> <hr>
+      <div class="row">
+        <div class="col-xs-8 btn-toolbar">
+          <button class="btn btn-success" type="submit" [disabled]="!myRecipeForm.valid">Save</button>
+          <button class="btn btn-warning" type="button" (click) = "onClear()">Clear</button>
+          <button class="btn btn-danger" type="button" (click) = "onDiscard()">Discard</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
