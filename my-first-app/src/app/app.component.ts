@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,11 @@ import { Observable, Observer } from 'rxjs';
 export class AppComponent implements OnInit {
 
   ngOnInit(){
+    firebase.initializeApp({
+      apiKey: "AIzaSyAOZT1Hj0RTPxkEK944TSngNK4GumTKHlg",
+      authDomain: "ng-recipe-book-29ced.firebaseapp.com"
+    });
+
 
     // const myObservable = Observable.create(
     //   (observer:Observer<string>) => {

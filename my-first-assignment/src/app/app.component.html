@@ -1,6 +1,58 @@
+<div class="container">
+        <div class="row">
+                <div class="list-group">
+                    <div  class="row">
+                        <div class="list-group-item clearfix"  *ngFor="let server of servers">
+                            <h4 class="list-group-item-text"> {{server.name}} ( {{server.id }})</h4>
+                        </div>
+                    </div>
+                    <input type="text" class="form-group" #myInput>
+                    <button type="button" class="btn btn-primary" (click)="addServer(myInput)">Add Server</button>
+                </div>
+             </div>
+
+</div>
+
+<!-- <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+           
+            <ul class="list-group">
+              <li
+                class="list-group-item"
+                *ngFor="let server of servers">
+                
+                <strong>{{ server.name }}</strong> | {{ server.id }} 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+
+
+     <!-- <div class="row">
+            <div class="form-group">
+                <a class="list-group-item clearfix"  style="cursor:pointer" [routerLink]="[index]"
+                routerLinkActive="active">
+                 <div class="pull-left">
+                   <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+                   <p class="list-group-item-text">{{recipe.description}}</p>
+                 </div>
+                 <span class="pull-right">
+                   <img src="{{recipe.imagePath}}" alt="" class="img-responsive" style="max-height: 50px" />
+                 </span>
+               </a>
+            </div>
+             
+          </div> -->
+     
+
+
 <app-warning-alert></app-warning-alert>
 
 <hr>
 
 <app-success></app-success>
+
+
 

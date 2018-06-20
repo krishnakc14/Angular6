@@ -18,6 +18,12 @@ export class RecipeService{
     
       ];
 
+      setRecipe(recipe:Recipe[]){
+        console.log("Saving Data: "+recipe);
+        this.recipes = recipe;
+        this.recipeChanged.next(this.recipes);
+      }
+
       getRecipe(){
           return this.recipes.slice();
       }

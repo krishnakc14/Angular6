@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule, HTTP_INTERCEPTORS }  from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +22,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
+import { HttpModule } from '@angular/http';
+import { DatabaseService } from './shared/database.service';
+import { AuthInterceptor } from './shared/auth.interceptor';
+import { LoggingInterceptor } from './shared/logging.interceptor';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard-service';
+
 
 @NgModule({
   declarations: [
@@ -37,15 +48,20 @@ import { RecipeService } from './recipes/recipe.service';
     MyDirectiveDirective,
     DropDownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers:[ShoppingListService, RecipeService],
+  providers:[ShoppingListService, RecipeService, DatabaseService, AuthService, AuthGuard,
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
+  {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

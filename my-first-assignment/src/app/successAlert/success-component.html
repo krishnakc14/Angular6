@@ -1,1 +1,24 @@
-<h2> Hey Dude wassup !!! </h2>
+
+<h3>{{appStatus | async}}</h3>
+
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        Filter:  <input type="text" [(ngModel)] = "myInputFilter">
+        Filter:  <input type="text" value={{appStatus|async}} #myInput>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let server of servers | filterpipe:myInputFilter:'status'"
+            [ngClass]="getStatusClasses(server)">
+            <span
+              class="badge">
+              {{ server.status }}
+            </span>
+            <strong>{{ server.name }}</strong> | {{ server.instanceType }} | {{ server.started }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

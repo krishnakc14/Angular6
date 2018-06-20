@@ -1,8 +1,8 @@
 <input type = "text"
         class = "form-control"
-        [(ngModel)] = "userName">
+        [(ngModel)]="userName">
 
-<p>User Name : {{ userName }}</p>
+<p>User Name : {{ userName |uppercase }}</p>
 
 <button class = "btn tbn-primary"
         [disabled] = "!istextPresent"

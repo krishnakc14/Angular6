@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a  routerLink = "/" style="cursor: pointer;" class="navbar-brand">Recipe Book</a>
+        <a  routerLink = "/recipes" style="cursor: pointer;" class="navbar-brand">Recipe Book</a>
       </div>
   
       <div class="collapse navbar-collapse">
@@ -10,15 +10,31 @@
           <li routerLinkActive='active'><a [routerLink] = "['/shopping-list']">Shopping List</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown" appDropDown>
+          <ng-template [ngIf] = "!authService.isAuthenticated()">
+             <li> <a routerLink = "/signUp">Register</a></li>
+             <li> <a routerLink = "/signIn">Login</a> </li>
+          </ng-template>
+
+          <li class="dropdown" appDropDown *ngIf = "authService.isAuthenticated()">
             <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a style="cursor: pointer;">Save Data</a></li>
-              <li><a style="cursor: pointer;">Fetch Data</a></li>
+              <li><a style="cursor: pointer;" (click) = "OnSaveData()">Save Data</a></li>
+              <li><a style="cursor: pointer;" (click) = "OnFetchData()">Fetch Data</a></li>
             </ul>
           </li>
+
+          <li> <a (click) = "onLogout()"  style="cursor: pointer;" *ngIf = "authService.isAuthenticated()">LogOut</a></li>
+
         </ul>
       </div>
     </div>
   </nav>
   
+  <div class="progress" *ngIf = "inProgress" >
+    <div  class="progress-bar progress-bar-striped progress-bar-animated" 
+          role="progressbar" 
+          attr.aria-valuenow= "{{percentage}}" 
+          aria-valuemin="0" 
+          aria-valuemax="100" 
+          style="width: 75%"></div>
+  </div>

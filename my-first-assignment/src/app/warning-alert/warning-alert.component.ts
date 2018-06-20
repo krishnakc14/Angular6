@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WarningAlertComponent implements OnInit {
 
-  userName;
+  userName = "Krish";
   isTextPresent = false;
 
   constructor() { }
@@ -20,7 +20,7 @@ export class WarningAlertComponent implements OnInit {
     if(this.userName){
         this.isTextPresent = true;
     }
-    this.userName = "";
+    this.userName = " Krish ";
 
   }
 
